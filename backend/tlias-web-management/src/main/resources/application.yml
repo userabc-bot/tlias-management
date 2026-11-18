@@ -1,0 +1,48 @@
+spring:
+  # MySQL数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tlias?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+  servlet:
+    multipart:
+      #最大单个文件大小
+      max-file-size: 10MB
+      #最大请求大小（包括所有文件和表单数据）
+      max-request-size: 100MB
+
+# MyBatis配置
+mybatis:
+  # 映射文件路径，如有需要可配置
+  mapper-locations: classpath:mapper/*.xml
+  # 实体类包路径
+  type-aliases-package: com.example.entity
+  configuration:
+    # 日志配置，使用STDOUT_LOGGING可以在控制台输出SQL
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 其他可选配置
+    default-fetch-size: 100
+    default-statement-timeout: 30
+    map-underscore-to-camel-case: true
+
+
+
+#配置事务管理日志级别
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
+
+
+
+#阿里云oos
+#private String endpoint = "https://oss-cn-beijing.aliyuncs.com";
+#    private String bucketName = "java-ai-mzx";
+#    private String region = "cn-beijing";
+aliyun:
+  oos:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: java-ai-mzx
+    region: cn-beijing
+
+
